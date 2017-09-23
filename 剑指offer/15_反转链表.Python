@@ -1,0 +1,38 @@
+# -*- coding:utf-8 -*-
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+class Solution:
+    # 返回ListNode
+    def ReverseList(self, pHead):
+        # write code here
+        if pHead is None:
+            return
+        if pHead.next is None:
+            return pHead
+        node = pHead
+        Nnode = node.next
+        pHead.next = None
+        temp = Nnode.next
+        while Nnode is not None:
+            Nnode.next = node
+            node = Nnode
+            Nnode = temp
+            if temp is not None:
+                temp = temp.next
+        return node
+
+
+
+
+
+if __name__ == '__main__':
+    bat = Solution()
+    num = [1,2,3,4,5,6,7]
+    pHead = ListNode(num[0])
+    head = pHead
+    for i in range(1,len(num)):
+        pHead.next = ListNode(num[i])
+        pHead = pHead.next
+    reversed = bat.ReverseList(head)

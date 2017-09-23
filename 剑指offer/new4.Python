@@ -1,0 +1,26 @@
+# -*- coding:utf-8 -*-
+import sys
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+def cook(food):
+    n = len(food)
+    right_food = list()
+    for i in range(0,n):
+        right_food.append(food[i][1])
+    # for j in range(0,n):
+    #     right_food.append(food[0][j])
+    return right_food
+
+
+if __name__ == '__main__':
+    n = sys.stdin.readline().strip()
+    n = map(int, n.split(" "))
+    food = []
+    for i in range(0, n[1]):
+        line1 = sys.stdin.readline().strip()
+        line1 = map(int, line1.split(" "))
+        food.append(line1)
+
+    print cook(food)

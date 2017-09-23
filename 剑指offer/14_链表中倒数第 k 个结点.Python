@@ -1,0 +1,48 @@
+# -*- coding:utf-8 -*-
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+class Solution:
+    def FindKthToTail(self, head, k):
+        # write code here
+        count = 0
+        list_node = head
+        while head != None:
+            count = count + 1
+            head = head.next
+        if count < k:
+            return
+        for i in range(0,count-k):
+            list_node = list_node.next
+        return list_node
+
+    def FindKthToTail_1(self, head, k):
+        list_node = head
+        count = 0
+        if head == None:
+            return
+        while count < k:
+            count = count + 1
+            if list_node == None:
+                return
+            list_node = list_node.next
+        while list_node != None:
+            list_node = list_node.next
+            head = head.next
+        return head
+
+
+if __name__ == '__main__':
+    bat = Solution()
+    num = [1, 2, 3, 5, 4, 6, 4, 86, 45, 25, 27, 36]
+    list_node = ListNode(num[0])
+    first_node = list_node
+    for i in range(1, len(num)):
+        node = ListNode(num[i])
+        first_node.next = node
+        first_node = first_node.next
+    print bat.FindKthToTail_1(list_node,5).val
+
